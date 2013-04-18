@@ -15,7 +15,7 @@
    </copyright>
 
    <plugin
-         id="hu.bme.mit.emf.incquery.visualization"
+         id="hu.bme.mit.incquery.visualization"
          download-size="0"
          install-size="0"
          version="0.0.0"
