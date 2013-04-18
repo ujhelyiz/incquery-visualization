@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>hu.bme.mit.incquery</groupId>
+	<artifactId>hu.bme.mit.incquery.visualization</artifactId>
+	<name>EMF-IncQuery Pattern Visualization</name>
+	<url>http://incquery.net</url>
+	<version>0.7.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<properties>
+		<tycho.version>0.16.0</tycho.version>
+		<tycho.extras.version>0.16.0</tycho.extras.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.showWarnings>true</maven.compiler.showWarnings>
+		<tycho.scmUrl>scm:git:git://github.com/ujhelyiz/incquery-visualization.git</tycho.scmUrl>
+		<incquery.update.site>http://download.eclipse.org/incquery/updates/milestone</incquery.update.site>
+	</properties>
+	<modules>
+		<module>../hu.bme.mit.incquery.visualization</module>
+		<module>../hu.bme.mit.incquery.visualization.feature</module>
+		<module>../hu.bme.mit.incquery.visualization.update</module>
+	</modules>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>juno</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/juno/</url>
+		</repository>
+		<repository>
+			<id>juno.update</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/eclipse/updates/4.2</url>
+		</repository>
+		<repository>
+			<id>incquery</id>
+			<layout>p2</layout>
+			<url>${incquery.update.site}</url>
+		</repository>
+	</repositories>
+</project>

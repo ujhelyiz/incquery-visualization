@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/hu.bme.mit.incquery.visualization.feature_0.7.0.qualifier.jar" id="hu.bme.mit.incquery.visualization.feature" version="0.7.0.qualifier">
+      <category name="hu.bme.mit.incquery"/>
+   </feature>
+   <category-def name="hu.bme.mit.incquery" label="EMF-IncQuery"/>
+</site>
