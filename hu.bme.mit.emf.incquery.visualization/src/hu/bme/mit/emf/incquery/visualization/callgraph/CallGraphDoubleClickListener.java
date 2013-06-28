@@ -3,11 +3,8 @@ package hu.bme.mit.emf.incquery.visualization.callgraph;
 import hu.bme.mit.emf.incquery.visualization.model.PatternElement;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IWorkspaceRoot;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.incquery.patternlanguage.patternLanguage.Pattern;
+import org.eclipse.incquery.tooling.ui.queryexplorer.util.PatternRegistry;
 import org.eclipse.jface.text.TextSelection;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
@@ -31,13 +28,11 @@ public class CallGraphDoubleClickListener implements IDoubleClickListener {
 
     @Override
     public void doubleClick(DoubleClickEvent event) {
-        final IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
         StructuredSelection selection = (StructuredSelection) event.getSelection();
         Object o = selection.getFirstElement();
         if (o instanceof PatternElement) {
             Pattern pattern = ((PatternElement) o).getPattern();
-            URI uri = pattern.eResource().getURI();
-            IFile file = workspaceRoot.getFile(new Path(uri.toPlatformString(true)));
+            IFile file = PatternRegistry.getInstance().getFileForPattern(pattern);
 
             for (IEditorReference ref : PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
                     .getEditorReferences()) {
