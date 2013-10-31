@@ -2,9 +2,9 @@
 <feature
       id="hu.bme.mit.incquery.visualization.feature"
       label="Pattern Visualization for EMF-IncQuery"
-      version="0.7.0.qualifier"
-      license-feature="org.eclipse.incquery.licence.feature"
-      license-feature-version="1.0.0.qualifier">
+      version="0.8.0.qualifier"
+      license-feature="org.eclipse.incquery.runtime.feature"
+      license-feature-version="0.8.0.qualifier">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]

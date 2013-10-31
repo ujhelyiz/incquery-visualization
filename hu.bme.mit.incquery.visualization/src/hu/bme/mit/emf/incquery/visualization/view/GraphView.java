@@ -1,29 +1,26 @@
 package hu.bme.mit.emf.incquery.visualization.view;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
-
 import hu.bme.mit.emf.incquery.visualization.callgraph.CallGraphDoubleClickListener;
 import hu.bme.mit.emf.incquery.visualization.callgraph.CallGraphLabelProvider;
 import hu.bme.mit.emf.incquery.visualization.callgraph.CallGraphModelContentProvider;
 import hu.bme.mit.emf.incquery.visualization.callgraph.CallGraphViewContentProvider;
 import hu.bme.mit.emf.incquery.visualization.contentgraph.ContentGraphDoubleClickListener;
 import hu.bme.mit.emf.incquery.visualization.contentgraph.ContentGraphLabelProvider;
-import hu.bme.mit.emf.incquery.visualization.contentgraph.ContentGraphLayoutAlgorithm;
 import hu.bme.mit.emf.incquery.visualization.contentgraph.ContentGraphModelContentProvider;
 import hu.bme.mit.emf.incquery.visualization.contentgraph.ContentGraphViewContentProvider;
 import hu.bme.mit.emf.incquery.visualization.model.PatternElement;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
 import org.eclipse.draw2d.SWTGraphics;
 import org.eclipse.gef4.zest.core.viewers.GraphViewer;
 import org.eclipse.gef4.zest.core.widgets.Graph;
-import org.eclipse.gef4.zest.core.widgets.GraphNode;
 import org.eclipse.gef4.zest.core.widgets.ZestStyles;
 import org.eclipse.gef4.zest.dot.DotGraph;
-import org.eclipse.gef4.zest.internal.dot.DotExport;
 import org.eclipse.gef4.zest.layouts.algorithms.GridLayoutAlgorithm;
 import org.eclipse.gef4.zest.layouts.algorithms.RadialLayoutAlgorithm;
 import org.eclipse.gef4.zest.layouts.algorithms.SpringLayoutAlgorithm;
@@ -40,10 +37,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.events.ControlListener;
-import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.KeyListener;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.GC;

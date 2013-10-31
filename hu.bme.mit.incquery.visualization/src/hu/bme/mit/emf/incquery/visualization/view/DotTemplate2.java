@@ -1,16 +1,19 @@
 package hu.bme.mit.emf.incquery.visualization.view;
 
-import java.util.List;
-
 import org.eclipse.draw2d.Ellipse;
-import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.Label;
-import org.eclipse.gef4.zest.core.widgets.*;
+import org.eclipse.gef4.zest.core.widgets.Graph;
+import org.eclipse.gef4.zest.core.widgets.GraphConnection;
+import org.eclipse.gef4.zest.core.widgets.GraphContainer;
+import org.eclipse.gef4.zest.core.widgets.GraphNode;
+import org.eclipse.gef4.zest.core.widgets.ZestStyles;
+import org.eclipse.gef4.zest.layouts.LayoutAlgorithm;
+import org.eclipse.gef4.zest.layouts.algorithms.GridLayoutAlgorithm;
+import org.eclipse.gef4.zest.layouts.algorithms.RadialLayoutAlgorithm;
+import org.eclipse.gef4.zest.layouts.algorithms.SpringLayoutAlgorithm;
+import org.eclipse.gef4.zest.layouts.algorithms.TreeLayoutAlgorithm;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.FontData;
-import org.eclipse.gef4.zest.layouts.algorithms.*;
-import org.eclipse.gef4.zest.layouts.*;
 
 public class DotTemplate2 {
 	protected static String nl;

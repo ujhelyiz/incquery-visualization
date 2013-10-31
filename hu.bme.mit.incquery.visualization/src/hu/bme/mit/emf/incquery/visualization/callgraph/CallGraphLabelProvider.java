@@ -11,6 +11,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef4.zest.core.viewers.IConnectionStyleProvider;
 import org.eclipse.gef4.zest.core.viewers.IEntityStyleProvider;
 import org.eclipse.gef4.zest.core.widgets.ZestStyles;
+import org.eclipse.gef4.zest.core.widgets.decoration.IConnectionDecorator;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Color;
 
@@ -127,5 +128,11 @@ public class CallGraphLabelProvider extends LabelProvider implements IConnection
         // TODO Auto-generated method stub
         return null;
     }
+
+	@Override
+	public IConnectionDecorator getConnectionDecorator(Object rel) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

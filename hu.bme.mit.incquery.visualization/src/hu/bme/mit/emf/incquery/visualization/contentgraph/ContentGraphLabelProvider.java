@@ -28,7 +28,7 @@ import org.eclipse.gef4.zest.core.widgets.GraphConnection;
 import org.eclipse.gef4.zest.core.widgets.GraphNode;
 import org.eclipse.gef4.zest.core.widgets.IStyleableFigure;
 import org.eclipse.gef4.zest.core.widgets.ZestStyles;
-import org.eclipse.gef4.zest.dot.DotGraph;
+import org.eclipse.gef4.zest.core.widgets.decoration.IConnectionDecorator;
 import org.eclipse.jface.viewers.IFontProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.SWT;
@@ -331,6 +331,12 @@ public class ContentGraphLabelProvider extends LabelProvider implements IConnect
 		FontData[] fontData = new FontData[]{new FontData("Courier",16,SWT.BOLD)};
         Font font = new Font(Display.getDefault().getSystemFont().getDevice(), fontData);
 		return font;
+	}
+
+	@Override
+	public IConnectionDecorator getConnectionDecorator(Object rel) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
