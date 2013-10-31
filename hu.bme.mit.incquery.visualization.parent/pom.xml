@@ -7,7 +7,7 @@
 	<artifactId>hu.bme.mit.incquery.visualization.parent</artifactId>
 	<name>EMF-IncQuery Pattern Visualization</name>
 	<url>http://incquery.net</url>
-	<version>0.7.0-SNAPSHOT</version>
+	<version>0.8.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<properties>
 		<tycho.version>0.18.1</tycho.version>

@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>hu.bme.mit.incquery.visualization.parent</artifactId>
 		<groupId>hu.bme.mit.incquery</groupId>
-		<version>0.7.0-SNAPSHOT</version>
+		<version>0.8.0-SNAPSHOT</version>
 		<relativePath>../hu.bme.mit.incquery.visualization.parent/pom.xml</relativePath>
 	</parent>
 	<groupId>hu.bme.mit.incquery</groupId>
