@@ -24,10 +24,10 @@ import java.util.Map;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gef4.zest.core.widgets.ZestStyles;
-import org.eclipse.gef4.zest.layouts.LayoutAlgorithm;
-import org.eclipse.gef4.zest.layouts.algorithms.SugiyamaLayoutAlgorithm;
-import org.eclipse.gef4.zest.layouts.interfaces.LayoutContext;
-import org.eclipse.gef4.zest.layouts.interfaces.NodeLayout;
+import org.eclipse.gef4.layout.LayoutAlgorithm;
+import org.eclipse.gef4.layout.algorithms.SugiyamaLayoutAlgorithm;
+import org.eclipse.gef4.layout.interfaces.LayoutContext;
+import org.eclipse.gef4.layout.interfaces.NodeLayout;
 
 /**
  * The SugiyamaLayoutAlgorithm class implements an algorithm to arrange a directed graph in a layered tree-like layout.
