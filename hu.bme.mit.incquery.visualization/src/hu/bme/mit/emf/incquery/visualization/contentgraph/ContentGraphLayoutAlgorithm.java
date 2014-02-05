@@ -5,9 +5,9 @@ import hu.bme.mit.emf.incquery.visualization.model.MyNode;
 import hu.bme.mit.emf.incquery.visualization.model.PatternElement;
 import hu.bme.mit.emf.incquery.visualization.model.VariableElement;
 
-import org.eclipse.gef4.zest.layouts.LayoutAlgorithm;
-import org.eclipse.gef4.zest.layouts.interfaces.EntityLayout;
-import org.eclipse.gef4.zest.layouts.interfaces.LayoutContext;
+import org.eclipse.gef4.layout.LayoutAlgorithm;
+import org.eclipse.gef4.layout.interfaces.EntityLayout;
+import org.eclipse.gef4.layout.interfaces.LayoutContext;
 import org.eclipse.swt.widgets.Item;
 
 public class ContentGraphLayoutAlgorithm implements LayoutAlgorithm {
@@ -37,10 +37,10 @@ public class ContentGraphLayoutAlgorithm implements LayoutAlgorithm {
 
 		for (int currentStep = 0; currentStep < entitiesToLayout.length; currentStep++) {
 			EntityLayout layoutEntity = entitiesToLayout[currentStep];
-			Item[] item=layoutEntity.getItems();
-			if (item[0]!=null)
+			Object[] item=layoutEntity.getItems();
+			if (item[0] instanceof Item)
 			{
-				Object o=item[0].getData();
+				Object o=((Item)item[0]).getData();
 				boolean l=false;
 				if (o instanceof VariableElement) {
 					VariableElement v=(VariableElement) o;
