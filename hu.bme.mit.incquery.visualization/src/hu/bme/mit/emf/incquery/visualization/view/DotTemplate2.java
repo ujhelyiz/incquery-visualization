@@ -1,7 +1,7 @@
 package hu.bme.mit.emf.incquery.visualization.view;
 
 import org.eclipse.draw2d.Ellipse;
-import org.eclipse.gef4.zest.core.widgets.Graph;
+import org.eclipse.gef4.zest.core.widgets.GraphWidget;
 import org.eclipse.gef4.zest.core.widgets.GraphConnection;
 import org.eclipse.gef4.zest.core.widgets.GraphContainer;
 import org.eclipse.gef4.zest.core.widgets.GraphNode;
@@ -87,7 +87,7 @@ public class DotTemplate2 {
 		 * Contributors: Fabian Steeg - initial API and implementation; see bug
 		 * 277380
 		 *******************************************************************************/
-		Graph graph = (Graph) argument;
+		GraphWidget graph = (GraphWidget) argument;
 		boolean small = graph.getNodes().size() < 100;
 		LayoutAlgorithm algo = graph.getLayoutAlgorithm() != null ? graph
 				.getLayoutAlgorithm() : new TreeLayoutAlgorithm();

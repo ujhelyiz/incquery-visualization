@@ -17,14 +17,16 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import org.eclipse.draw2d.SWTGraphics;
-import org.eclipse.gef4.zest.core.viewers.GraphViewer;
-import org.eclipse.gef4.zest.core.widgets.Graph;
-import org.eclipse.gef4.zest.core.widgets.ZestStyles;
-import org.eclipse.gef4.zest.dot.DotGraph;
+import org.eclipse.gef4.layout.algorithms.DFSLayerProvider;
 import org.eclipse.gef4.layout.algorithms.GridLayoutAlgorithm;
 import org.eclipse.gef4.layout.algorithms.RadialLayoutAlgorithm;
 import org.eclipse.gef4.layout.algorithms.SpringLayoutAlgorithm;
+import org.eclipse.gef4.layout.algorithms.SugiyamaLayoutAlgorithm;
+import org.eclipse.gef4.layout.algorithms.SugiyamaLayoutAlgorithm.Direction;
 import org.eclipse.gef4.layout.algorithms.TreeLayoutAlgorithm;
+import org.eclipse.gef4.zest.core.viewers.GraphViewer;
+import org.eclipse.gef4.zest.core.widgets.GraphWidget;
+import org.eclipse.gef4.zest.core.widgets.ZestStyles;
 import org.eclipse.incquery.patternlanguage.emf.eMFPatternLanguage.PatternModel;
 import org.eclipse.incquery.patternlanguage.emf.types.IEMFTypeProvider;
 import org.eclipse.incquery.patternlanguage.patternLanguage.Pattern;
@@ -37,8 +39,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.events.ControlListener;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
@@ -64,7 +66,6 @@ public class GraphView extends ViewPart {
 	private PatternModel patternmodel;
 	private Combo combo;
 	private PatternElement patternElement;
-	private DotGraph contentDotGraph;
 
 	@Inject
 	private IEMFTypeProvider iEMFTypeProvider;
@@ -129,7 +130,7 @@ public class GraphView extends ViewPart {
 		combo = new Combo(composite, SWT.READ_ONLY);
 		combo.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		combo.setVisible(false);
-		combo.addSelectionListener(new SelectionListener() {
+		combo.addSelectionListener(new SelectionAdapter() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -137,12 +138,6 @@ public class GraphView extends ViewPart {
 				setContentModel(patternElement.getPattern(), index);
 				combo.setText(combo.getItem(index));
 				// System.out.println(index);
-
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
 
 			}
 		});
@@ -157,7 +152,7 @@ public class GraphView extends ViewPart {
 		callGraphViewer.setContentProvider(new CallGraphViewContentProvider());
 		callGraphViewer.setLabelProvider(new CallGraphLabelProvider());
 		callGraphViewer
-				.setLayoutAlgorithm(new SugiyamaLayoutAlgorithm2(), true);
+				.setLayoutAlgorithm(new SugiyamaLayoutAlgorithm(Direction.VERTICAL, new DFSLayerProvider()), true);
 		callGraphViewer.applyLayout();
 		callGraphViewer.setConnectionStyle(ZestStyles.CONNECTIONS_DIRECTED);
 		callGraphViewer
@@ -184,8 +179,7 @@ public class GraphView extends ViewPart {
 		contentGraphViewer
 				.setContentProvider(new ContentGraphViewContentProvider());
 		contentGraphViewer.setLabelProvider(new ContentGraphLabelProvider());
-		contentGraphViewer.setLayoutAlgorithm(new SugiyamaLayoutAlgorithm2(),
-				true);
+		contentGraphViewer.setLayoutAlgorithm(new SugiyamaLayoutAlgorithm(Direction.VERTICAL, new DFSLayerProvider()));
 		contentGraphViewer.applyLayout();
 		contentGraphViewer
 				.addDoubleClickListener(new ContentGraphDoubleClickListener(
@@ -251,7 +245,7 @@ public class GraphView extends ViewPart {
 		return contentGraphViewer;
 	}
 
-	public void exportDotGraph(Graph graph) {
+	public void exportDotGraph(GraphWidget graph) {
 		String raw = new DotTemplate2().generate(graph);
 		Scanner scanner = new Scanner(raw);
 		StringBuilder builder = new StringBuilder();
@@ -354,12 +348,11 @@ public class GraphView extends ViewPart {
 			IWorkbenchAction {
 		public HorizontalSugiyamaAction() {
 			super();
-			setText("Custom Horizontal Sugiyama Layout");
+			setText("Horizontal Sugiyama Layout");
 		}
 
 		public void run() {
-			contentGraphViewer.setLayoutAlgorithm(new SugiyamaLayoutAlgorithm2(
-					1));
+			contentGraphViewer.setLayoutAlgorithm(new SugiyamaLayoutAlgorithm(Direction.HORIZONTAL, new DFSLayerProvider()));
 			contentGraphViewer.applyLayout();
 		}
 
@@ -371,12 +364,14 @@ public class GraphView extends ViewPart {
 			IWorkbenchAction {
 		public VerticalSugiyamaAction() {
 			super();
-			setText("Custom Vertical Sugiyama Layout");
+			setText("Vertical Sugiyama Layout");
 		}
 
 		public void run() {
-			contentGraphViewer
-					.setLayoutAlgorithm(new SugiyamaLayoutAlgorithm2());
+			final SugiyamaLayoutAlgorithm layout = new SugiyamaLayoutAlgorithm(Direction.VERTICAL, new DFSLayerProvider());
+			
+            contentGraphViewer
+					.setLayoutAlgorithm(layout);
 			contentGraphViewer.applyLayout();
 		}
 
