@@ -96,4 +96,9 @@ public class ContentGraphLayoutAlgorithm implements LayoutAlgorithm {
 		}
 	}
 
+    @Override
+    public LayoutContext getLayoutContext() {
+        return context;
+    }
+
 }
